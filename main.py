@@ -6,7 +6,7 @@ Writes one one-line office joke (under 200 characters) to /output/entry.txt.
 import os
 
 
-MAX_CHARS = 199
+MAX_JOKE_CHARS = 199  # the gate's cap: under 200 characters
 
 LINE = "My manager said my code was self-documenting. Turns out self was doing all the work."
 
@@ -22,8 +22,8 @@ def main() -> None:
     text = line()
     if not text.strip():
         raise ValueError("entry is blank")
-    if len(text) > MAX_CHARS:
-        raise ValueError(f"joke is {len(text)} chars (max {MAX_CHARS})")
+    if len(text) > MAX_JOKE_CHARS:
+        raise ValueError(f"joke is {len(text)} chars (max {MAX_JOKE_CHARS})")
     path = os.path.join(out_dir, "entry.txt")
     with open(path, "w", encoding="utf-8") as fh:
         fh.write(text + "\n")
